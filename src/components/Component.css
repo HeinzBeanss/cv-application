@@ -1,0 +1,40 @@
+.general, .educational, .practical {
+    display: flex;
+    flex-direction: column;
+    border: 1px white solid;
+    border-radius: 0.4rem;
+    padding: 10px;
+}
+
+.sectiontitle {
+    text-align: left;
+}
+
+input {
+    border:  1px solid white;
+    border-radius: 0.4rem;
+    font-size: 1.1rem;
+    padding: 3px;
+    padding-left: 5px;
+    margin-left: 5px;
+}
+
+label {
+    font-size: 1.4;
+    margin: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.finishedinfo {
+    margin: 5px;
+    text-align: start;
+}
+
+h2 {
+    margin: 0;
+}
