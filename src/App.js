@@ -2,67 +2,40 @@ import './App.css';
 import General from "../src/components/General"
 import EducationalExperience from "../src/components/EducationalExperience"
 import PracticalExperience from "../src/components/PracticalExperience"
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 
 
-class App extends Component {
-  constructor(props) {
-    super(props)
+const App = () => {
 
-    this.state = {
-      
-      inputs: true,
+  let [inputs, setInputs] = useState(true);
+  let [general, setGeneral] = useState({name: "", phone: "", email: ""});
+  let [education, setEducation] = useState({schoolname: "", titleofstudy: "", dateofstudy: ""});
+  let [practical, setPractical] = useState({companyname: "", positiontitle: "", taskdescription: "", dateworked: ""})
 
-      general: {
-        name: "",
-        phone: "",
-        email: "",
-      },
+  // this was the contructor above
 
-      education: {
-        schoolname: "",
-        titleofstudy: "",
-        dateofstudy: ""
-      },
-
-      practical: {
-        companyname: "",
-        positiontitle: "",
-        taskdescription: "",
-        dateworked: "",
-      }
-    }
-
-    this.handleEdit = this.handleEdit.bind(this);
-    this.handleSave = this.handleSave.bind(this);
-
+  const handleEdit = () => {
+    setInputs(inputs = true);
   }
 
-  handleEdit() {
-    this.setState({inputs: true});
-
+  const handleSave = () => {
+    setInputs(inputs = false);
   }
 
-  handleSave() {
-    console.log("test");
-    this.setState({inputs: false});
-
-  }
-
-  render() {
+  
     return (
       <div className="App">
         <h1>CV Application</h1>
-        <General general={this.state}/>
-        <EducationalExperience education={this.state}/>
-        <PracticalExperience practical={this.state}/>
+        <General general={general} inputs={inputs}/>
+        {/* <EducationalExperience education={education}/>
+        <PracticalExperience practical={practical}/> */}
         <div className="buttonbay"> 
-          <button className='edit' onClick={this.handleEdit}>EDIT</button>
-          <button className='save' onClick={this.handleSave}>SAVE</button>
+          <button className='edit' onClick={handleEdit}>EDIT</button>
+          <button className='save' onClick={handleSave}>SAVE</button>
         </div>
       </div>
     );
   }
-}
+
 
 export default App;

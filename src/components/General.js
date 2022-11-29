@@ -6,9 +6,9 @@ class General extends Component {
         super(props)
 
         this.state = {
-            name: this.props.general.general.name,
-            email: this.props.general.general.email,
-            phone: this.props.general.general.phone,
+            name: this.props.general.name,
+            email: this.props.general.email,
+            phone: this.props.general.phone,
         }
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
@@ -29,7 +29,7 @@ class General extends Component {
     }
 
     render() {
-        if (this.props.general.inputs === true) {
+        if (this.props.inputs === true) {
         return (
             <div className="general">
                 <h2 className="sectiontitle">General Information</h2>
