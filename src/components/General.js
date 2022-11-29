@@ -1,48 +1,36 @@
 import "./Component.css";
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class General extends Component {
-    constructor(props) {
-        super(props)
+const General = (props) => {
 
-        this.state = {
-            name: this.props.general.name,
-            email: this.props.general.email,
-            phone: this.props.general.phone,
-        }
-        this.handleChangeName = this.handleChangeName.bind(this);
-        this.handleChangeEmail = this.handleChangeEmail.bind(this);
-        this.handleChangePhone = this.handleChangePhone.bind(this);
+    let [general, setGeneral] = useState({name: "", phone: "", email: ""});
 
+    const handleChangeName = (event) => {
+        setGeneral({...general, name: event.target.value})
     }
 
-    handleChangeName(event) {
-        this.setState({name: event.target.value})
+    const handleChangeEmail = (event) => {
+        setGeneral({...general, email: event.target.value})
     }
 
-    handleChangeEmail(event) {
-        this.setState({email: event.target.value})
+    const handleChangePhone = (event) => {
+        setGeneral({...general, phone: event.target.value})
     }
 
-    handleChangePhone(event) {
-        this.setState({phone: event.target.value})
-    }
-
-    render() {
-        if (this.props.inputs === true) {
+    if (props.inputs === true) {
         return (
             <div className="general">
                 <h2 className="sectiontitle">General Information</h2>
 
                 <form>
                     <label> Full Name: 
-                        <input type="text" value={this.state.name} onChange={this.handleChangeName}/>
+                        <input type="text" value={general.name} onChange={handleChangeName}/>
                     </label>
                     <label> Email Address: 
-                        <input type="text" value={this.state.email} onChange={this.handleChangeEmail}/>
+                        <input type="text" value={general.email} onChange={handleChangeEmail}/>
                     </label>
                     <label> Phone Number: 
-                        <input type="text" value={this.state.phone} onChange={this.handleChangePhone}/>
+                        <input type="text" value={general.phone} onChange={handleChangePhone}/>
                     </label>
                 </form>
             </div>
@@ -51,12 +39,12 @@ class General extends Component {
     } else {
         return  <div className="general">
         <h2 className="sectiontitle">General Information</h2>
-        <h3 className="finishedinfo"> {this.state.name} </h3>
-        <h3 className="finishedinfo"> {this.state.email} </h3>
-        <h3 className="finishedinfo"> {this.state.phone} </h3>
+        <h3 className="finishedinfo"> {general.name} </h3>
+        <h3 className="finishedinfo"> {general.email} </h3>
+        <h3 className="finishedinfo"> {general.phone} </h3>
     </div>
     }
-    }
+    
 }
 
 export default General;

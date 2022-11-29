@@ -1,56 +1,44 @@
 import "./Component.css";
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class PracticalExperience extends Component {
-    constructor(props) {
-        super(props)
+const PracticalExperience = (props) => {
 
-        this.state = {
-            companyname: this.props.practical.practical.companyname,
-            positiontitle: this.props.practical.practical.positiontitle,
-            taskdescription: this.props.practical.practical.taskdescription,
-            dateworked: this.props.practical.practical.dateworked,
-        }
-        this.handleChangeCompanyName = this.handleChangeCompanyName.bind(this);
-        this.handleChangePositionTitle = this.handleChangePositionTitle.bind(this);
-        this.handleChangeTaskDescription = this.handleChangeTaskDescription.bind(this);
-        this.handleChangeDateWorked = this.handleChangeDateWorked.bind(this);
+    let [practical, setPractical] = useState({companyname: "", positiontitle: "", taskdescription: "", dateworked: ""})
+
+
+    const handleChangeCompanyName = (event) => {
+        setPractical({...practical, companyname: event.target.value})
     }
 
-    handleChangeCompanyName(event) {
-        this.setState({companyname: event.target.value})
+    const handleChangePositionTitle = (event) => {
+        setPractical({...practical, positiontitle: event.target.value})
     }
 
-    handleChangePositionTitle(event) {
-        this.setState({positiontitle: event.target.value})
+    const handleChangeTaskDescription = (event) => {
+        setPractical({...practical, taskdescription: event.target.value})
     }
 
-    handleChangeTaskDescription(event) {
-        this.setState({taskdescription: event.target.value})
+    const handleChangeDateWorked = (event) => {
+        setPractical({...practical, dateworked: event.target.value})
     }
 
-    handleChangeDateWorked(event) {
-        this.setState({dateworked: event.target.value})
-    }
-
-    render() {
-        if (this.props.practical.inputs === true) {
+        if (props.inputs === true) {
             return (
                 <div className="practical">
                     <h2 className="sectiontitle">Practical Experience</h2>
     
                     <form>
                         <label> Name of Company: 
-                            <input type="text" value={this.state.companyname} onChange={this.handleChangeCompanyName}/>
+                            <input type="text" value={practical.companyname} onChange={handleChangeCompanyName}/>
                         </label>
                         <label> Title Position: 
-                            <input type="text" value={this.state.positiontitle} onChange={this.handleChangePositionTitle}/>
+                            <input type="text" value={practical.positiontitle} onChange={handleChangePositionTitle}/>
                         </label>
                         <label> Task Description: 
-                            <input type="text" value={this.state.taskdescription} onChange={this.handleChangeTaskDescription}/>
+                            <input type="text" value={practical.taskdescription} onChange={handleChangeTaskDescription}/>
                         </label>
                         <label> Date Worked: 
-                            <input type="text" value={this.state.dateworked} onChange={this.handleChangeDateWorked}/>
+                            <input type="text" value={practical.dateworked} onChange={handleChangeDateWorked}/>
                         </label>
                     </form>
                 </div>
@@ -59,14 +47,14 @@ class PracticalExperience extends Component {
                 return (
                     <div className="practical">
                         <h2 className="sectiontitle">Practical Experience</h2>
-                        <p className="finishedinfo"> {this.state.companyname} </p>
-                        <p className="finishedinfo"> {this.state.positiontitle} </p>
-                        <p className="finishedinfo"> {this.state.taskdescription} </p>
-                        <p className="finishedinfo"> {this.state.dateworked} </p>
+                        <p className="finishedinfo"> {practical.companyname} </p>
+                        <p className="finishedinfo"> {practical.positiontitle} </p>
+                        <p className="finishedinfo"> {practical.taskdescription} </p>
+                        <p className="finishedinfo"> {practical.dateworked} </p>
                     </div>
                 )
             }
-    }
+    
 }
 
 export default PracticalExperience;
